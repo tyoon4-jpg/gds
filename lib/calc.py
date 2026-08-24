@@ -218,20 +218,23 @@ class PrimaryCalcInputs:
     nu: float = 0.3
     Is: float = 0.85
     time_years: float = 30.0
-    # Aggregate cap (Pebble-Tech) — 0 = none
+    # Aggregate cap (Pebble-Tech) — 0 = none. Modeled as LOAD SPREAD (see note below), not as a
+    # substitute bearing stratum — see module docstring / run_primary_calc for why.
     aggregate_thickness_m: float = 0.0
-    aggregate_phi_deg: float = 45.0
-    aggregate_gamma: float = 20.0
-    # Geocell — None / "하이셀 (1.2mm)" / "구속셀 (1.6mm)"
+    spread_angle_deg: float = 26.57  # 2V:1H, standard conservative granular-fill spread assumption
+    # Geocell — None / "하이셀 (1.2mm)" / "구속셀 (1.6mm)". Adds spread depth (its own height) plus
+    # an optional manufacturer-certified confinement increment (kPa) added to native qa — 0 if
+    # not supplied (conservative, never guessed).
     geocell_product: str | None = None
-    geocell_confinement_increment_kpa: float = 0.0  # manufacturer-certified; 0 if not supplied
+    geocell_height_m: float = 0.0
+    geocell_confinement_increment_kpa: float = 0.0
 
 
 @dataclass
 class PrimaryCalcResult:
     unreinforced: BearingResult
-    with_aggregate: BearingResult | None
-    qa_final: float
+    qa_allowable: float               # unreinforced qa1 + any geocell confinement increment
+    effective_pressure_at_base: float  # q_applied spread through aggregate+geocell to native subgrade
     settlement_schmertmann_mm: float
     settlement_elastic_mm: float
     settlement_governing_mm: float
@@ -242,36 +245,44 @@ class PrimaryCalcResult:
 
 
 def run_primary_calc(inp: PrimaryCalcInputs) -> PrimaryCalcResult:
+    """Bearing check for the reinforced case uses LOAD SPREAD, not a substituted-material bearing
+    re-run. An earlier version of this function re-ran the full Meyerhof/Terzaghi formula using
+    the aggregate's own (high) friction angle over the full footing width — that assumes an
+    infinitely thick homogeneous mass of that material, which is wrong for a 100-300mm veneer
+    over weak native soil (the self-weight term 0.5*gamma*B*Ngamma explodes when a high-phi
+    material's Ngamma is multiplied by a wide B, giving nonsensical thousands-of-kPa results).
+    Caught by testing against the real Gwangju BH-1 case (knowledge/design-worked-examples.md
+    SS C) — see git history for the defect this replaced.
+
+    Correct treatment: the aggregate/geocell system spreads the applied pressure over an
+    enlarged effective footprint by the time it reaches native subgrade (standard granular-fill
+    load-spread design philosophy, e.g. 2V:1H). Native subgrade is checked against this REDUCED
+    effective pressure using its OWN (unchanged) bearing capacity — not an inflated qa."""
     notes: list[str] = []
 
     unreinforced = compute_bearing_capacity(
         BearingInputs(inp.c, inp.phi_deg, inp.gamma, inp.B, inp.L, inp.Df, inp.Dw)
     )
 
-    with_aggregate = None
-    qa_final = unreinforced.qa
+    total_spread_depth = inp.aggregate_thickness_m + inp.geocell_height_m
+    if total_spread_depth > 0:
+        spread = total_spread_depth * math.tan(math.radians(inp.spread_angle_deg))
+        B_eff = inp.B + 2 * spread
+        L_eff = inp.L + 2 * spread
+        effective_pressure = inp.q_applied * (inp.B * inp.L) / (B_eff * L_eff)
+    else:
+        effective_pressure = inp.q_applied
 
-    if inp.aggregate_thickness_m > 0:
-        df_eff = max(inp.Df - inp.aggregate_thickness_m, 0.0)
-        if df_eff == 0 and inp.aggregate_thickness_m > inp.Df:
-            notes.append(
-                "Aggregate cap thickness exceeds original founding depth — effective depth "
-                "clamped to 0. Check this is physically sensible for your zone."
-            )
-        with_aggregate = compute_bearing_capacity(
-            BearingInputs(0.0, inp.aggregate_phi_deg, inp.aggregate_gamma, inp.B, inp.L, df_eff, inp.Dw)
-        )
-        qa_final = with_aggregate.qa
-
+    qa_allowable = unreinforced.qa
     if inp.geocell_product:
         if inp.geocell_confinement_increment_kpa <= 0:
             notes.append(
                 f"Geocell ({inp.geocell_product}) selected but no manufacturer-certified "
-                "confinement increment supplied — treated as 0 kPa (conservative, ignores real "
-                "capacity). Get the certified confinement coefficient from the product datasheet "
-                "before finalizing a real design."
+                "confinement increment supplied — treated as 0 kPa additional (conservative, "
+                "ignores real capacity). Get the certified confinement coefficient from the "
+                "product datasheet before finalizing a real design."
             )
-        qa_final += inp.geocell_confinement_increment_kpa
+        qa_allowable += inp.geocell_confinement_increment_kpa
 
     settlement_inputs = SettlementInputs(
         q_applied=inp.q_applied, B=inp.B, Df=inp.Df, gamma=inp.gamma, E=inp.E,
@@ -280,14 +291,22 @@ def run_primary_calc(inp: PrimaryCalcInputs) -> PrimaryCalcResult:
     s_schmertmann = schmertmann_settlement(settlement_inputs)
     s_elastic = elastic_settlement(settlement_inputs)
     s_governing = max(s_schmertmann, s_elastic)
+    if total_spread_depth > 0:
+        notes.append(
+            "Settlement is NOT reduced for the aggregate/geocell layer in this calculator — it "
+            "uses the same native-subgrade settlement regardless of reinforcement. A real "
+            "reinforced-case settlement is lower than shown here (the reinforced layer itself is "
+            "stiff and the spread reduces net pressure reaching the compressible subgrade); "
+            "treat the settlement number as conservative/upper-bound when reinforcement is used."
+        )
 
-    bearing_pass = qa_final >= inp.q_applied
+    bearing_pass = qa_allowable >= effective_pressure
     settlement_pass = s_governing <= inp.settlement_limit_mm
 
     return PrimaryCalcResult(
         unreinforced=unreinforced,
-        with_aggregate=with_aggregate,
-        qa_final=qa_final,
+        qa_allowable=qa_allowable,
+        effective_pressure_at_base=effective_pressure,
         settlement_schmertmann_mm=s_schmertmann,
         settlement_elastic_mm=s_elastic,
         settlement_governing_mm=s_governing,

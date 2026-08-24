@@ -63,21 +63,31 @@ if application == "Primary — building foundation":
     )
 
     st.markdown("### Reinforcement (optional)")
+    st.caption(
+        "Modeled as load spread through the aggregate/geocell to native subgrade (standard "
+        "granular-fill design philosophy) — native subgrade's own bearing capacity (left) is "
+        "unchanged; what changes is the pressure it actually sees."
+    )
     with st.container(horizontal=True):
         with st.container(border=True, width="stretch"):
             st.markdown("**Aggregate cap (페블테크)**")
             agg_t = st.number_input("Cap thickness (m)", 0.0, 2.0, 0.0, 0.05, key="p_agg_t")
-            agg_phi = st.number_input("Aggregate φ' (°)", 30.0, 50.0, 45.0, 1.0, key="p_agg_phi")
-            agg_gamma = st.number_input("Aggregate γ (kN/m³)", 15.0, 25.0, 20.0, 0.5, key="p_agg_gamma")
+            spread_angle = st.number_input(
+                "Load-spread angle (° from vertical)", 15.0, 45.0, 26.57, 0.5, key="p_spread",
+                help="Default 26.57° = 2V:1H, a standard conservative granular-fill spread "
+                     "assumption. Steeper (larger) angle = more spread = more benefit.",
+            )
 
         with st.container(border=True, width="stretch"):
             st.markdown("**Geocell (하이셀/구속셀)**")
             geocell = st.selectbox("Product", [None, "하이셀 (1.2mm HDPE)", "구속셀 (1.6mm HDPE)"], key="p_geocell")
+            geocell_h = st.number_input("Cell height (m)", 0.0, 0.6, 0.2, 0.05, key="p_geocell_h") if geocell else 0.0
             gfr = st.number_input(
                 "Manufacturer-certified confinement increment (kPa)", 0.0, 500.0, 0.0, 5.0,
                 key="p_gfr",
-                help="From the geocell product's certified datasheet. Left at 0 = conservative "
-                     "(ignores real capacity) — do not guess a number here.",
+                help="From the geocell product's certified datasheet, added directly to native "
+                     "qa. Left at 0 = conservative (ignores real confinement benefit) — do not "
+                     "guess a number here.",
             )
             if geocell and gfr == 0:
                 st.caption(":orange[No certified value entered — increment treated as 0.]")
@@ -86,8 +96,8 @@ if application == "Primary — building foundation":
         c=c, phi_deg=phi, gamma=gamma, E=E, Dw=Dw,
         B=B, L=L, Df=Df, q_applied=q_applied, settlement_limit_mm=settlement_limit,
         nu=nu, Is=Is, time_years=time_years,
-        aggregate_thickness_m=agg_t, aggregate_phi_deg=agg_phi, aggregate_gamma=agg_gamma,
-        geocell_product=geocell, geocell_confinement_increment_kpa=gfr,
+        aggregate_thickness_m=agg_t, spread_angle_deg=spread_angle,
+        geocell_product=geocell, geocell_height_m=geocell_h, geocell_confinement_increment_kpa=gfr,
     )
     result = calc.run_primary_calc(inputs)
 
@@ -95,8 +105,8 @@ if application == "Primary — building foundation":
     with st.container(horizontal=True):
         st.metric(
             "Allowable bearing capacity qa",
-            f"{result.qa_final:.1f} kPa",
-            f"{result.qa_final - q_applied:+.1f} vs. applied",
+            f"{result.qa_allowable:.1f} kPa",
+            f"{result.qa_allowable - result.effective_pressure_at_base:+.1f} vs. effective pressure",
             border=True,
         )
         st.metric(
@@ -113,18 +123,17 @@ if application == "Primary — building foundation":
         )
 
     with st.expander("Calculation detail"):
-        st.markdown(f"**Unreinforced (original ground):** Terzaghi qu = {result.unreinforced.qu_terzaghi:.1f} kPa, "
+        st.markdown(f"**Native subgrade bearing (unchanged):** Terzaghi qu = {result.unreinforced.qu_terzaghi:.1f} kPa, "
                     f"Meyerhof qu = {result.unreinforced.qu_meyerhof:.1f} kPa — governing: "
                     f"**{result.unreinforced.method_governing}**, qa1 = {result.unreinforced.qa:.1f} kPa")
-        if result.with_aggregate:
-            st.markdown(f"**With aggregate cap** (founding level raised, φ'={agg_phi}°): "
-                        f"Terzaghi qu = {result.with_aggregate.qu_terzaghi:.1f} kPa, "
-                        f"Meyerhof qu = {result.with_aggregate.qu_meyerhof:.1f} kPa — governing: "
-                        f"**{result.with_aggregate.method_governing}**, qa2 = {result.with_aggregate.qa:.1f} kPa")
-        if geocell:
-            st.markdown(f"**+ Geocell confinement increment:** {gfr:.1f} kPa")
-        st.markdown(f"**Final allowable bearing capacity qa:** {result.qa_final:.1f} kPa "
-                    f"{'≥' if result.bearing_pass else '<'} applied {q_applied:.1f} kPa → "
+        if geocell and gfr > 0:
+            st.markdown(f"**+ Geocell confinement increment:** {gfr:.1f} kPa → allowable qa = {result.qa_allowable:.1f} kPa")
+        if agg_t > 0 or geocell_h > 0:
+            st.markdown(f"**Effective pressure at native subgrade** (spread over {agg_t+geocell_h:.2f}m total "
+                        f"at {spread_angle:.1f}° from vertical): {result.effective_pressure_at_base:.1f} kPa "
+                        f"(raw applied: {q_applied:.1f} kPa)")
+        st.markdown(f"**Check:** qa {result.qa_allowable:.1f} kPa "
+                    f"{'≥' if result.bearing_pass else '<'} effective pressure {result.effective_pressure_at_base:.1f} kPa → "
                     f"{'**PASS**' if result.bearing_pass else '**N.G.**'}")
         st.markdown("---")
         st.markdown(f"**Schmertmann settlement:** {result.settlement_schmertmann_mm:.1f} mm")

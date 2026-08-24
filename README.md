@@ -29,16 +29,17 @@ design → construction → safety → QA/QC workflow.
 Open this project in Claude Code and either ask a question directly (the right specialist is
 picked automatically) or run `/aggregate-platform` if you're not sure which one applies.
 
-## Important: two related but distinct applications
+## Two applications, one system
 
-The PRD frames this system as a **temporary tracked-plant working platform** (piling rigs,
-cranes, excavators during MiPM excavation), sized to BR470/TWf's LSF method. The real project
-reference files in `GDS_spec/` are actually **permanent building-foundation ground improvement**
-jobs (mat foundations, slab-on-grade), sized with the company's in-house MOLIT
-Terzaghi/Meyerhof/empirical + Schmertmann/elastic method. Both use the same physical system and
-company products — but different design load types and acceptance criteria. See the divergence
-note in `knowledge/company-specs-summary.md`; the agents know to ask which application you mean
-before quoting a number.
+The **primary application** of this system is **permanent building foundation support** — ground
+improvement beneath mat foundations, slab-on-grade, and footings — sized with the company's
+in-house MOLIT Terzaghi/Meyerhof/empirical + Schmertmann/elastic method (KCS 11 30 10). Every real
+project reference file in `GDS_spec/` is this application. The **additional application** is
+**temporary tracked-plant working platforms** (piling rigs, cranes, excavators during MiPM
+excavation), sized to BR470/TWf's LSF method instead. Both use the same physical system and
+company products — but different design load types, methods, and acceptance criteria. See
+`knowledge/company-specs-summary.md`; the agents know to ask which application you mean before
+quoting a number.
 
 ## Status
 

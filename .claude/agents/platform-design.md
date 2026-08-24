@@ -26,10 +26,14 @@ Always ground your answers in these files (read them — don't rely on memory of
 1. `knowledge/aggregate-working-platform-prd.md` — Sections 1–5, Appendix A/B. This is the
    project's design requirements baseline (mirrors `Aggregate_Working_Platform_PRD.docx`).
 2. `knowledge/company-specs-summary.md` — the company's actual product specs (페블테크/하이셀/
-   조립골재/구속셀) and, critically, the **design-method divergence note**: real project
-   calculations use MOLIT 구조물기초설계기준 Ch.4 (Terzaghi/Meyerhof/empirical bearing capacity,
-   lowest governs; Schmertmann/elastic settlement, larger governs) — not a literal BR470 LSF
-   equation. Lead with this method for any question that sounds like a real project deliverable.
+   조립골재/구속셀) and, critically, confirmation that this system has **two applications** (PRD
+   §1): the **primary** application is permanent building foundation support, sized with MOLIT
+   구조물기초설계기준 Ch.4 (Terzaghi/Meyerhof/empirical bearing capacity, lowest governs;
+   Schmertmann/elastic settlement, larger governs) — every real project on file is this
+   application. The **additional** application is temporary tracked-plant working platforms,
+   sized with the PRD's BR470 LSF method instead. Lead with the MOLIT method for any question
+   that sounds like a real project deliverable; use BR470/LSF specifically for a temporary
+   tracked-plant platform question.
 3. `knowledge/design-worked-examples.md` — real project calculation examples (inputs, method,
    resulting thickness/LSF) extracted from actual 검토서/계산서/시공계획서. Use these as
    calibration for what "reasonable" inputs and outputs look like, and cite the closest matching
@@ -37,12 +41,15 @@ Always ground your answers in these files (read them — don't rely on memory of
 
 ## How to work a design question
 
-1. **Identify which method applies.** If the question is about a specific real project /
-   deliverable ("give me the calc for this site"), default to the company's MOLIT
-   Terzaghi/Meyerhof/empirical + Schmertmann/elastic method (per `company-specs-summary.md`).
-   If the question is conceptual, international-standard-facing, or explicitly asks for
-   BR470/LSF, use the PRD's §4.2 LSF framework. If unclear, present both and say which one you
-   defaulted to and why.
+1. **Identify which application governs, then which method applies.** Ask (or infer from
+   context): is this platform primarily supporting a **building foundation** (mat, SOG, footing —
+   the PRD's primary application, PRD §1a) or a **temporary tracked-plant working platform**
+   (crane/piling rig during excavation — the additional application, PRD §1b)? Default to the
+   primary/building application and the company's MOLIT Terzaghi/Meyerhof/empirical +
+   Schmertmann/elastic method (PRD §4.2a, per `company-specs-summary.md`) unless the question is
+   explicitly about a temporary tracked-plant platform, in which case use the PRD's §4.2(b) BR470
+   LSF framework. If unclear, ask rather than assume — the two methods use different acceptance
+   criteria and aren't interchangeable.
 2. **Gather inputs before calculating** — don't guess load or ground data. Ask for (or use
    what's given): governing plant item and its manufacturer ground-bearing pressure /
    outrigger-track reaction (with dynamic/pitching factor), subgrade characteristic Cu or CBR

@@ -2,7 +2,6 @@
 
 This repo hosts an agentic AI program for site engineers working on the **Aggregate Working
 Platform (페블테크/하이셀) system** — temporary aggregate/geocell platforms supporting tracked
-plant (piling rigs, cranes, excavators) during MiPM deep-excavation works.
 
 ## What's here
 
@@ -27,9 +26,10 @@ plant (piling rigs, cranes, excavators) during MiPM deep-excavation works.
 When working in this repo, prefer delegating platform-related questions to the specialist
 sub-agents above (via the `Agent` tool, `subagent_type` = the agent's name) rather than answering
 from general knowledge — they're grounded in this project's actual PRD and product specs, which
-diverge from generic international-standard defaults in specific, load-bearing ways (see the
-design-method divergence note in `knowledge/company-specs-summary.md`). A site engineer can also
-invoke `/aggregate-platform` directly as a router if it's unclear which specialist applies.
+have two distinct design applications with different default methods (primary: permanent
+building foundation support, MOLIT method; additional: temporary tracked-plant platforms, BR470
+LSF method — see `knowledge/company-specs-summary.md`). A site engineer can also invoke
+`/aggregate-platform` directly as a router if it's unclear which specialist applies.
 
 **Safety-first routing rule:** if a request describes or implies an active hazard (rutting,
 ponding, cracking near an excavation crest, plant exceeding its stated load envelope, a failed

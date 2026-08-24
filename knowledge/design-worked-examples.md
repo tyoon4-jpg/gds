@@ -22,8 +22,9 @@ worked examples are for calibration, not a substitute for that stamp.**
 
 ## A. The calculation method, at formula level
 
-This is what the company's own 검토서/계산서 actually run (see the divergence note in
-`company-specs-summary.md` for why this differs from the PRD's BR470/TWf LSF framing). All five
+This is what the company's own 검토서/계산서 actually run — the design method for the PRD's
+*primary* application (§4.2a); see `company-specs-summary.md` for how this relates to the PRD's
+BR470/TWf LSF framing, which covers the *additional* application (§4.2b) instead. All five
 projects follow this same structure.
 
 ### A.1 Unreinforced (original ground) bearing capacity
@@ -243,10 +244,11 @@ table alone.
   (Jeonju review note) — conventional 잡석(crushed rubble) sub-base beneath the blinding layer
   becomes redundant; flag this as a potential cost/spec conflict if the structural drawings still
   call for it.
-- **Application mismatch to double-check with the requester:** all five worked examples above are
-  **permanent building foundation / mat / SOG-slab ground improvement**, not literally a
-  *temporary tracked-plant working platform* as framed in the PRD's primary scope (§1). The
-  underlying aggregate/geocell system and company calculation method are the same either way, but
-  confirm which application the site engineer actually means before quoting a design load,
-  acceptance criterion (25.4mm vs. plant-manufacturer tolerance), or service-life expectation —
-  see the divergence note in `company-specs-summary.md`.
+- **Application to confirm with the requester:** all five worked examples above are **permanent
+  building foundation / mat / SOG-slab ground improvement** — the PRD's *primary* application
+  (§1a), not the temporary tracked-plant working platform (§1b) these were originally assumed to
+  represent. The underlying aggregate/geocell system and company calculation method are the same
+  either way, but still confirm which application the site engineer actually means before
+  quoting a design load, acceptance criterion (25.4mm vs. plant-manufacturer tolerance), or
+  service-life expectation — a temporary-platform question needs the BR470 LSF method (§4.2b)
+  instead, per `company-specs-summary.md`.

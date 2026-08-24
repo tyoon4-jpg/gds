@@ -52,9 +52,10 @@ The specialists, defined in `.claude/agents/`:
 
 - `knowledge/aggregate-working-platform-prd.md` — full PRD, structured for grep/read.
 - `knowledge/company-specs-summary.md` — real product specs (페블테크/하이셀/조립골재/구속셀/
-  메가헬리컬파일) extracted from `GDS_spec/시방서.zip`, including the important note that the
-  company's real calculation practice (MOLIT Terzaghi/Meyerhof/empirical bearing +
-  Schmertmann/elastic settlement) differs from the PRD's BR470/TWf LSF framing.
+  메가헬리컬파일) extracted from `GDS_spec/시방서.zip`, including confirmation that this system
+  has two applications (PRD §1): primary (permanent building foundation support, MOLIT
+  Terzaghi/Meyerhof/empirical bearing + Schmertmann/elastic settlement method) and additional
+  (temporary tracked-plant working platforms, the PRD's BR470/TWf LSF method).
 - `knowledge/design-worked-examples.md` — real project calculation examples extracted from
   `GDS_spec/` review/calc reports and spreadsheets.
 - `knowledge/field-video-notes.md` — visual review of the four `GDS_spec/*.mp4` training/site/

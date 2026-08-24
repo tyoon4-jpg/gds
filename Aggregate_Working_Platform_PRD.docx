@@ -2,35 +2,44 @@
 PRODUCT REQUIREMENTS DOCUMENT
 Aggregate Working Platform
 페블테크 (Pebble-Tech) Aggregate Working Platform System
-Design, Construction, and Safety Requirements for Tracked-Plant Working Platforms in MiPM Deep Excavation and Underground Construction
+Design, Construction, and Safety Requirements for the Aggregate Working Platform System
+Primary Application: Ground Improvement / Working Platform Support for Building Foundations (Mat Foundations, Slab-on-Grade); Additional Application: Temporary Tracked-Plant Working Platforms in MiPM Deep Excavation and Underground Construction
 Incorporating geosynthetic reinforcement (하이셀, Hi-Cell) design
 Document Status: DRAFT — Rev. A
 Date: 2026-08-24
+Revision note (2026-08-24): Scope corrected. The primary application of this system is permanent building foundation ground improvement/support; the temporary tracked-plant working platform use (the original Rev. A framing) is an additional application, not the primary one. See Section 1.
 Prepared for: TaeYang
 Note: This PRD is a design/construction/safety procedure specification. It defines requirements and step-by-step procedures only — it does not implement calculation code or software.
  
 1.  Purpose and Scope
-This document defines the design methodology, step-by-step construction procedure, and safety requirements for the Aggregate Working Platform (페블테크) system used to support tracked and wheeled plant — piling rigs, cranes, excavators, and delivery vehicles — during temporary earth-retention and deep-excavation works under the MiPM underground construction system (soldier piles, waler beams, struts, rakers, diaphragm walls).
-The platform is a temporary, engineered structural layer of compacted crushed aggregate, placed over the prepared subgrade, and optionally reinforced with a geosynthetic layer (하이셀) to reduce required thickness, control differential settlement, and improve punching-shear resistance at the platform/subgrade interface.
+This document defines the design methodology, step-by-step construction procedure, and safety requirements for the Aggregate Working Platform (페블테크) system, an engineered layer of well-graded crushed aggregate — optionally reinforced with a geocell layer (하이셀/구속셀, Hi-Cell) — placed over prepared subgrade to improve ground bearing capacity and control settlement.
+
+The system has two applications, covered together in this PRD because they share the same materials, design-method family, and construction procedure:
+(a) PRIMARY APPLICATION — permanent building foundation support: ground improvement beneath mat foundations, slab-on-grade (SOG), and isolated/strip footings for new-build structures, sized against sustained building loads and a permanent-structure settlement criterion.
+(b) ADDITIONAL APPLICATION — temporary tracked-plant working platforms: a temporary structural layer supporting tracked and wheeled plant — piling rigs, cranes, excavators, and delivery vehicles — during temporary earth-retention and deep-excavation works under the MiPM underground construction system (soldier piles, waler beams, struts, rakers, diaphragm walls), sized against plant bearing pressure and a serviceability/leveling-tolerance criterion.
+
+Both applications use the same aggregate/geocell products and the same field construction procedure (Sections 6–9); they differ in governing load case, target design method, and acceptance criterion (Section 4.2). Which application governs a given design zone must be identified explicitly before sizing — see Section 5, Step 1.
 1.1 In Scope
-•	Design methodology and bearing-capacity/thickness-sizing procedure for aggregate-only and geosynthetic-reinforced platforms.
-•	Step-by-step design procedure (sequence of engineering checks) — descriptive, not a computational implementation.
-•	Step-by-step field construction procedure from subgrade preparation through platform handover.
+•	Design methodology and bearing-capacity/settlement-sizing procedure for aggregate-only and geosynthetic(geocell)-reinforced ground improvement beneath permanent building foundations (primary application).
+•	Design methodology and bearing-capacity/thickness-sizing procedure for aggregate-only and geosynthetic-reinforced temporary tracked-plant working platforms (additional application).
+•	Step-by-step design procedure (sequence of engineering checks) for both applications — descriptive, not a computational implementation.
+•	Step-by-step field construction procedure from subgrade preparation through platform/handover, common to both applications.
 •	Safety measures across design, construction, and in-service (working) stages.
-•	QA/QC acceptance criteria, monitoring, and maintenance during platform service life.
+•	QA/QC acceptance criteria, monitoring, and maintenance during the platform's/improved ground's service life.
 1.2 Out of Scope
-•	Permanent works foundation design.
-•	Detailed structural design of the built-up I-beam sections themselves (covered under separate MiPM structural PRDs).
+•	Structural design of the permanent building superstructure/foundation elements themselves (this PRD covers the ground-improvement layer beneath them, not the mat/footing/slab structural design) — that is the structural engineer of record's separate deliverable.
+•	Deep foundation design (e.g. 메가헬리컬파일 mega helical piles) — a different foundation system, covered under its own product specification, not this PRD.
+•	Detailed structural design of the built-up I-beam sections used in MiPM temporary works themselves (covered under separate MiPM structural PRDs).
 •	Software/calculation-tool implementation — this PRD intentionally specifies procedures only; no functions, scripts, or code are to be implemented from this document.
 1.3 Reference Project Examples (GDS)
 This PRD is intended to incorporate design and construction examples from the project reference folder (design/construction case files, referred to as "GDS"). Those files were not accessible from this working environment at the time of drafting (see Appendix C). Sections flagged “[GDS-PENDING]” should be reviewed and refined once those reference files are supplied — e.g. pasted content, uploaded files, or a shared repository.
 2.  Definitions and Terminology
 Korean project terminology is used throughout in parallel with English equivalents, consistent with project convention.
 Term	Definition	Korean
-Aggregate Working Platform	Engineered layer of well-graded crushed rock aggregate constructed over prepared subgrade to distribute plant loading and provide a safe, stable operating surface for tracked/wheeled construction equipment.	페블테크 (Pebble-Tech)
+Aggregate Working Platform	Engineered layer of well-graded crushed rock aggregate constructed over prepared subgrade to improve ground bearing capacity beneath permanent building foundations (primary application), or to distribute plant loading and provide a safe, stable operating surface for tracked/wheeled construction equipment (additional application).	페블테크 (Pebble-Tech)
 Geosynthetic reinforcement	Geogrid and/or geotextile layer(s) placed at the subgrade/platform interface (or within the aggregate layer) to provide separation, filtration, lateral restraint, and tensile (membrane) reinforcement, reducing required platform thickness.	하이셀 (Hi-Cell)
 Subgrade	The prepared, in-situ (or engineered fill) ground surface directly beneath the working platform.	
-LSF (Load Safety Factor)	Ratio of platform+subgrade bearing resistance to applied bearing pressure from plant, per BR470/TWf method. Target LSF ≥ 1.0 minimum; ≥ 1.25 recommended where ground data is uncertain or platform is safety-critical (e.g., piling rig outrigger position).	
+LSF (Load Safety Factor)	Ratio of platform+subgrade bearing resistance to applied bearing pressure from plant, per the BR470/TWf method used for the additional (temporary tracked-plant) application only (Section 4.2(b)). Target LSF ≥ 1.0 minimum; ≥ 1.25 recommended where ground data is uncertain or platform is safety-critical (e.g., piling rig outrigger position). The primary (building foundation) application uses a different acceptance basis — allowable bearing capacity (FS=3.0 on qu) and a settlement limit — not an LSF ratio; see Section 4.2(a).	
 Punching shear failure	Localized bearing failure mode where plant load punches through the aggregate platform into a weaker subgrade before general (global) bearing failure develops.	
 Bearing pressure (ground contact pressure)	Vertical pressure applied to the platform surface by tracked plant, crane outriggers, or wheel loads, including static, dynamic, and pitching (eccentricity) effects.	
 		
@@ -41,7 +50,8 @@ Bearing pressure (ground contact pressure)	Vertical pressure applied to the plat
 3.  Applicable Codes and Standards
 Per project convention, design checks reference both Korean and international codes/guidance in parallel.
 Domain	Korean	International	Notes
-Working platform design method	KDS 11 50 05 (얕은기초 지지력, bearing capacity of shallow foundations); KCS 11 20 20 (성토 및 다짐)	BR470 "Working Platforms for Tracked Plant" (2nd ed., 2019 TWf update); CIRIA C787	BR470/TWf method used as primary punching-shear/LSF procedure; KDS bearing-capacity clauses used to verify subgrade ULS independently.
+Ground improvement design method (PRIMARY application — building foundation support)	KCS 11 30 10 (연약지반 치환공, soft-ground replacement); 국토교통부 구조물기초설계기준 Ch.4 (얕은기초); KS F 2444 (평판재하시험); KDS 11 50 05	— (no direct international equivalent used; cross-checked against EN 1997-1 Annex D bearing-capacity theory)	Governing method for the primary (building) application: allowable bearing capacity = lowest of Terzaghi/Meyerhof/empirical (KS F 2444 plate load test confirms in field); settlement = larger of Schmertmann/elastic theory, checked against a permanent-structure serviceability limit (typ. 25.4mm, confirm per project). See Section 4.2(a).
+Working platform design method (ADDITIONAL application — temporary tracked-plant platform)	KDS 11 50 05 (얕은기초 지지력, bearing capacity of shallow foundations); KCS 11 20 20 (성토 및 다짐)	BR470 "Working Platforms for Tracked Plant" (2nd ed., 2019 TWf update); CIRIA C787	BR470/TWf method used for the additional (temporary tracked-plant) application; KDS bearing-capacity clauses used to verify subgrade ULS independently. See Section 4.2(b).
 General geotechnical design (ULS/SLS)	KDS 11 10 00 (지반 설계 일반)	EN 1997-1 (Eurocode 7); AASHTO LRFD Bridge Design (Section 10, temporary works reference)	Partial factor / limit-state framework cross-check.
 Bearing capacity theory	KDS 11 50 05	Terzaghi / Meyerhof / Hansen bearing capacity theory; EN 1997-1 Annex D	Common theoretical basis; BR470 punching-shear check builds on Meyerhof's method for two-layer (platform-over-subgrade) systems.
 Compaction / earthworks	KCS 11 20 20; KS F 2312 (다짐시험)	EN 13286 (unbound mixtures); ASTM D1557 (Modified Proctor); AASHTO T180	Aggregate compaction QC.
@@ -52,21 +62,34 @@ Site investigation / subgrade strength	KS F 2314 (CBR시험); KDS 11 10 05	BS 13
 Health & safety (construction)	산업안전보건법 및 시행규칙; KOSHA GUIDE	HSE (UK) construction guidance; OSHA 29 CFR 1926	Applied to platform construction and plant-operation safety measures (Section 7).
 4.  Design Basis
 4.1 Functional Requirements
-The platform shall be designed for the governing (maximum) ground bearing pressure among all plant items expected to operate on, or travel across, the platform during the works, including:
+The platform/improved ground shall be designed for the governing (maximum) load case applicable to its application (Section 1):
+Primary application (building foundation support):
+•	Sustained dead and live load from the building's mat foundation, slab-on-grade, or footings, per the structural engineer's foundation loading schedule — this is the ordinary governing case for the primary application.
+•	Any construction-stage surcharge from formwork, shoring, or material laydown on the slab/mat area before the structure is complete.
+Additional application (temporary tracked-plant platform), governing where this application applies to a zone:
 •	Piling / soldier-pile installation rig (rotary, CFA, or vibratory), including maximum outrigger/track reaction during pitching (leveling) and pile extraction.
 •	Mobile or crawler crane for strut/raker/waler erection, at the working radius and configuration producing maximum outrigger or track bearing pressure.
 •	Tracked excavator (bulk dig, trimming) at maximum digging/slewing reach.
 •	Material delivery vehicles (concrete trucks, low-loaders for plant delivery/removal) — wheel loads, often governing at platform edges/access ramps.
 •	Any surcharge from stockpiled materials (soldier pile sections, strut/waler steel, spoil) adjacent to or on the platform.
-•	Any vertical loading from buildings or structures.  
+A zone may need to be checked against both applications in sequence (e.g. a platform used temporarily by a piling rig, later built over as the permanent mat's ground improvement) — see Section 5, Step 1.
 4.2 Design Method Overview
-The platform is sized using the BR470 / TWf (2019) load-spread and punching-shear method, in which the applied plant bearing pressure is checked against the combined resistance of (a) shear developed within the aggregate platform along assumed punching-shear planes, and (b) the bearing resistance of the underlying subgrade at the base of those planes. This two-layer system approach is cross-checked against classical bearing-capacity theory (Terzaghi/Meyerhof, per KDS 11 50 05 and EN 1997-1 Annex D) treating the platform as a stress-distributing layer over a weaker stratum.
-The governing design criterion is the Load Safety Factor:
+Two design methods apply, one per application (Section 1). Identify which application governs a given zone before selecting the method — do not default to one without checking (Section 5, Step 1).
+
+(a) PRIMARY APPLICATION — building foundation support: sized per KCS 11 30 10 (연약지반 치환공) and 국토교통부 구조물기초설계기준 Ch.4 (얕은기초), using two independent checks, both of which must pass:
+•	Bearing capacity: ultimate bearing capacity qu computed by Terzaghi, Meyerhof, and an empirical formula (하이셀/구속셀-only zones: Meyerhof alone); the lowest of the values computed governs. Allowable bearing capacity qa = qu ÷ 3 (safety factor 3.0 on ultimate capacity). Design passes where qa ≥ applied bearing pressure from the building load case (Section 4.1).
+•	Settlement: computed by both Schmertmann's method and elastic theory (plus one-dimensional consolidation settlement where a compressible clay layer is present); the larger governing value is checked against the project's permanent-structure serviceability limit — typically 25.4mm (1 inch) total settlement, confirm the actual project-specific limit with the structural engineer.
+Where a geosynthetic (하이셀/구속셀 geocell) layer is used, its bearing-capacity contribution is added per Section 4.4 before the qa ≥ applied-pressure check, and its stiffness is reflected in the settlement calculation via an equivalent modulus for the reinforced layer.
+
+(b) ADDITIONAL APPLICATION — temporary tracked-plant working platform: sized using the BR470/TWf (2019) load-spread and punching-shear method, in which the applied plant bearing pressure is checked against the combined resistance of (i) shear developed within the aggregate platform along assumed punching-shear planes, and (ii) the bearing resistance of the underlying subgrade at the base of those planes. Cross-checked against classical bearing-capacity theory (Terzaghi/Meyerhof, per KDS 11 50 05 and EN 1997-1 Annex D). The governing design criterion for this application is the Load Safety Factor:
 LSF  =  (Platform punching-shear resistance + Subgrade bearing resistance) / Applied bearing pressure
 •	LSF ≥ 1.0 — absolute minimum, applicable only where subgrade strength and plant loads are both well characterized and platform is not safety-critical.
 •	LSF ≥ 1.25 — recommended minimum for piling-rig and crane platforms, and wherever ground data derives from desk-study/limited investigation.
 •	LSF ≥ 1.5 — recommended where subgrade contains soft/organic pockets, made ground, or where excavation proximity reduces passive resistance on one side of the punching-shear plane (edge-of-excavation condition).
+
+The two methods are not interchangeable substitutes for each other — a zone governed by the primary (building) application is checked against (a) above, not the LSF ratio in (b), and vice versa. Where a zone is genuinely subject to both applications in sequence (Section 4.1), size it against both and carry the governing (thicker/more conservative) result forward.
 4.3 Key Design Parameters
+Note: the parameters and target LSF below are for the additional (temporary tracked-plant) application's BR470 method (Section 4.2(b)). For the primary (building foundation) application's parameters (subgrade γ/c/φ/E by layer, building design load, permanent-structure settlement limit) and its FS=3.0-on-qu / Schmertmann-elastic-settlement acceptance basis, see Section 4.2(a) and the worked examples referenced in Appendix C.
 Parameter	Symbol	Typical Source / Notes
 Subgrade undrained shear strength	Cu	Site investigation (CPT/vane/lab UU triaxial); characteristic (cautious) value, not mean, per EN 1997-1.
 Subgrade CBR (granular/cohesionless subgrade)	CBR	In-situ DCP or lab CBR (KS F 2314 / ASTM D1883); correlated to Cu where undrained parameters unavailable (Cu ≈ 30 × CBR, kPa, indicative only).
@@ -76,7 +99,7 @@ Punching-shear angle (load spread)	θ	BR470 default: vertical-sided punching she
 Track/outrigger contact pressure (static)	q0	Manufacturer data sheet for the specific rig/crane and configuration — governing case, not nominal.
 Dynamic/pitching amplification factor	Kdyn	Applied to static plant load per BR470 guidance (typ. 1.1–1.3 depending on plant type and operating mode; piling rig "pitching" during pile installation is a governing dynamic case).
 Platform thickness	h	Design output — governing (max) value from LSF check across all plant/load cases and subgrade zones.
-Target LSF	LSF	Per Section 4.2 — minimum 1.0, recommended 1.25–1.5 by application.
+Target LSF (additional application only)	LSF	Per Section 4.2(b) — minimum 1.0, recommended 1.25–1.5 by application; not applicable to the primary (building) application, which uses the FS=3.0 bearing-capacity/settlement basis of Section 4.2(a) instead.
 Minimum platform edge distance from excavation / slope crest	de	Per Section 7.1 — geotechnical stability check independent of LSF bearing check.
 4.4 Geosynthetic Reinforcement (하이셀) Design
 Where the aggregate-only platform thickness from Section 4.3 is impractical (excessive import volume, program duration, or head-room constraint beneath overhead services/structures), a geosynthetic reinforcement layer (하이셀) is introduced at the platform/subgrade interface, or as a secondary layer within the aggregate, to provide:
@@ -84,9 +107,10 @@ Where the aggregate-only platform thickness from Section 4.3 is impractical (exc
 •	Lateral restraint / confinement — geogrid interlock with aggregate particles increases the effective friction angle and lateral stiffness of the platform layer immediately above the geogrid.
 •	Membrane (tensioned-membrane) support — for very soft subgrades, the reinforcement mobilizes tensile membrane action, providing an additional vertical resistance component.
 •	Local base reinforcement / bearing capacity improvement — quantified using the Giroud–Han (2004) design method for geogrid-reinforced unpaved/working platforms, calibrated by the geogrid manufacturer's certified aperture stability modulus (ASM).
-The geosynthetic-reinforced platform is designed using the same LSF framework as Section 4.2, with the platform punching-shear resistance term increased by the reinforcement contribution per the Giroud–Han method (or the manufacturer's third-party-certified design charts derived from it). Typical outcome: 20–30% reduction in required aggregate thickness for equivalent LSF, consistent with the geometric-efficiency principle applied elsewhere in this project's optimized-section work.
+For the additional (temporary tracked-plant) application, the geosynthetic-reinforced platform is designed using the same LSF framework as Section 4.2(b), with the platform punching-shear resistance term increased by the reinforcement contribution per the Giroud–Han method (or the manufacturer's third-party-certified design charts derived from it). For the primary (building foundation) application, the geocell's bearing-capacity contribution is instead added directly to the allowable bearing capacity per Section 4.2(a) (confinement + stress-distribution increment, per the geocell manufacturer's certified confinement coefficient) before the qa ≥ applied-pressure check. Typical outcome, either application: 20–30% reduction in required aggregate thickness for equivalent capacity — in practice, on very soft subgrade, the reduction can be much larger than 20–30% because an aggregate-only section becomes impractically thick rather than merely thicker (see Appendix C worked examples).
 Note: Product selection (geogrid vs. woven geotextile vs. combination/composite) and reinforcement design parameters should be confirmed against the specific 하이셀 product datasheet once available; this PRD defines the design framework, not a specific product's numeric properties. [GDS-PENDING: confirm against project reference examples.]
 5.  Step-by-Step Design Procedure
+Note: the numbered steps below are written for the additional (temporary tracked-plant) application (Section 4.2(b)) and use plant-loading language throughout. For the primary (building foundation) application, the equivalent procedure follows the same overall shape (define loads → characterize subgrade → select aggregate/geocell → calculate → check edge/slope conditions where relevant → check settlement → drainage → document → construction-stage verification) but substitutes the building load case (Section 4.1) and the bearing-capacity/settlement method of Section 4.2(a) at Steps 1 and 4; see the worked examples in Appendix C for the primary application's procedure as actually run on real projects, pending a full Rev. B rewrite of this section to state both applications' steps explicitly.
 The following sequence defines the design procedure to be followed for each platform zone (areas of differing subgrade condition, plant type, or proximity to excavation should be treated as separate design zones). This is a procedural specification — engineering judgement and calculation are to be carried out by the responsible geotechnical/structural engineer using the methods of Section 4; no calculation software or scripts are implemented by this document.
 STEP 1  Define plant and loading inputs
 •	Obtain manufacturer ground-bearing-pressure data for every plant item expected to use the platform (piling rig in all operating modes, crane at critical working radius, excavator, delivery vehicles).

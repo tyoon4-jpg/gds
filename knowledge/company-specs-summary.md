@@ -17,13 +17,16 @@ the site engineer for a fresh extraction if the temp copy is gone):
 5. 메가헬리컬파일 특기시방서(114-7.5t)_20260720.pdf
 6. 메가헬리컬파일 특기시방서(114-9t)_20260720.pdf
 
-## ⚠ Headline finding: design method differs from the PRD's BR470/TWf framing
+## ✔ Headline finding: this is the PRD's primary application's own design method
 
 All four aggregate-replacement products below (페블테크, 하이셀, 조립골재, 구속셀) are governed
 by **KCS 11 30 10 (연약지반 치환공, soft-ground replacement) and MOLIT 구조물기초설계기준
 Ch.4 (얕은기초, shallow foundations)** — i.e. they are **soft-ground *foundation replacement/
-improvement* methods**, not a literal implementation of BR470's tracked-plant working-platform
-LSF/punching-shear equation.
+improvement* methods**, used for the PRD's **primary application (§4.2a): permanent building
+foundation support**. This is not a literal implementation of BR470's tracked-plant
+working-platform LSF/punching-shear equation — that method (§4.2b) applies to the PRD's
+*additional* application (temporary tracked-plant platforms) specifically. See
+`knowledge/aggregate-working-platform-prd.md` §4.2 for both methods side by side.
 
 - **Bearing capacity:** computed by Terzaghi + Meyerhof + an empirical formula (페블테크,
   조립골재), with the **lowest of the three governing**; 하이셀 and 구속셀 specs use
@@ -32,13 +35,15 @@ LSF/punching-shear equation.
 - Platform thickness is iterated until both the bearing-capacity and settlement checks pass —
   there is no explicit "LSF ratio" computed or reported in these company documents.
 
-**Practical guidance for the design agent:** when a site engineer's question maps to a real
-project design/review package, lead with the MOLIT Terzaghi/Meyerhof/empirical + Schmertmann/
-elastic method (this is what the company's own 검토서/계산서 will show — see
-`design-worked-examples.md`). Offer the PRD's BR470 LSF method as a supplementary
-international-standard cross-check, not as the primary expected method, and say explicitly that
-the two frameworks differ so nobody is surprised when a reviewer's numbers don't match an LSF
-calc.
+**Practical guidance for the design agent:** first confirm which application governs (PRD §1 —
+primary/building vs. additional/temporary tracked-plant). For the primary (building foundation)
+application — the ordinary case, and what every real project design/review package on file
+actually is — lead with the MOLIT Terzaghi/Meyerhof/empirical + Schmertmann/elastic method (this
+is what the company's own 검토서/계산서 will show — see `design-worked-examples.md`). Use the
+PRD's BR470 LSF method (§4.2b) only when the question is specifically about a temporary
+tracked-plant working platform. The two frameworks are not interchangeable — say explicitly which
+one applies so nobody expects an LSF ratio out of a building-foundation calc, or a FS=3.0
+bearing-capacity check out of a temporary-platform calc.
 
 ## 페블테크 (Pebble-Tech) — aggregate-only platform
 

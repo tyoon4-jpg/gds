@@ -1,0 +1,249 @@
+
+PRODUCT REQUIREMENTS DOCUMENT
+Aggregate Working Platform
+페블테크 (Pebble-Tech) Aggregate Working Platform System
+Design, Construction, and Safety Requirements for Tracked-Plant Working Platforms in MiPM Deep Excavation and Underground Construction
+Incorporating geosynthetic reinforcement (하이셀, Hi-Cell) design
+Document Status: DRAFT — Rev. A
+Date: 2026-08-24
+Prepared for: TaeYang
+Note: This PRD is a design/construction/safety procedure specification. It defines requirements and step-by-step procedures only — it does not implement calculation code or software.
+ 
+1.  Purpose and Scope
+This document defines the design methodology, step-by-step construction procedure, and safety requirements for the Aggregate Working Platform (페블테크) system used to support tracked and wheeled plant — piling rigs, cranes, excavators, and delivery vehicles — during temporary earth-retention and deep-excavation works under the MiPM underground construction system (soldier piles, waler beams, struts, rakers, diaphragm walls).
+The platform is a temporary, engineered structural layer of compacted crushed aggregate, placed over the prepared subgrade, and optionally reinforced with a geosynthetic layer (하이셀) to reduce required thickness, control differential settlement, and improve punching-shear resistance at the platform/subgrade interface.
+1.1 In Scope
+•	Design methodology and bearing-capacity/thickness-sizing procedure for aggregate-only and geosynthetic-reinforced platforms.
+•	Step-by-step design procedure (sequence of engineering checks) — descriptive, not a computational implementation.
+•	Step-by-step field construction procedure from subgrade preparation through platform handover.
+•	Safety measures across design, construction, and in-service (working) stages.
+•	QA/QC acceptance criteria, monitoring, and maintenance during platform service life.
+1.2 Out of Scope
+•	Permanent works foundation design.
+•	Detailed structural design of the built-up I-beam sections themselves (covered under separate MiPM structural PRDs).
+•	Software/calculation-tool implementation — this PRD intentionally specifies procedures only; no functions, scripts, or code are to be implemented from this document.
+1.3 Reference Project Examples (GDS)
+This PRD is intended to incorporate design and construction examples from the project reference folder (design/construction case files, referred to as "GDS"). Those files were not accessible from this working environment at the time of drafting (see Appendix C). Sections flagged “[GDS-PENDING]” should be reviewed and refined once those reference files are supplied — e.g. pasted content, uploaded files, or a shared repository.
+2.  Definitions and Terminology
+Korean project terminology is used throughout in parallel with English equivalents, consistent with project convention.
+Term	Definition	Korean
+Aggregate Working Platform	Engineered layer of well-graded crushed rock aggregate constructed over prepared subgrade to distribute plant loading and provide a safe, stable operating surface for tracked/wheeled construction equipment.	페블테크 (Pebble-Tech)
+Geosynthetic reinforcement	Geogrid and/or geotextile layer(s) placed at the subgrade/platform interface (or within the aggregate layer) to provide separation, filtration, lateral restraint, and tensile (membrane) reinforcement, reducing required platform thickness.	하이셀 (Hi-Cell)
+Subgrade	The prepared, in-situ (or engineered fill) ground surface directly beneath the working platform.	
+LSF (Load Safety Factor)	Ratio of platform+subgrade bearing resistance to applied bearing pressure from plant, per BR470/TWf method. Target LSF ≥ 1.0 minimum; ≥ 1.25 recommended where ground data is uncertain or platform is safety-critical (e.g., piling rig outrigger position).	
+Punching shear failure	Localized bearing failure mode where plant load punches through the aggregate platform into a weaker subgrade before general (global) bearing failure develops.	
+Bearing pressure (ground contact pressure)	Vertical pressure applied to the platform surface by tracked plant, crane outriggers, or wheel loads, including static, dynamic, and pitching (eccentricity) effects.	
+		
+		
+		
+		
+		
+3.  Applicable Codes and Standards
+Per project convention, design checks reference both Korean and international codes/guidance in parallel.
+Domain	Korean	International	Notes
+Working platform design method	KDS 11 50 05 (얕은기초 지지력, bearing capacity of shallow foundations); KCS 11 20 20 (성토 및 다짐)	BR470 "Working Platforms for Tracked Plant" (2nd ed., 2019 TWf update); CIRIA C787	BR470/TWf method used as primary punching-shear/LSF procedure; KDS bearing-capacity clauses used to verify subgrade ULS independently.
+General geotechnical design (ULS/SLS)	KDS 11 10 00 (지반 설계 일반)	EN 1997-1 (Eurocode 7); AASHTO LRFD Bridge Design (Section 10, temporary works reference)	Partial factor / limit-state framework cross-check.
+Bearing capacity theory	KDS 11 50 05	Terzaghi / Meyerhof / Hansen bearing capacity theory; EN 1997-1 Annex D	Common theoretical basis; BR470 punching-shear check builds on Meyerhof's method for two-layer (platform-over-subgrade) systems.
+Compaction / earthworks	KCS 11 20 20; KS F 2312 (다짐시험)	EN 13286 (unbound mixtures); ASTM D1557 (Modified Proctor); AASHTO T180	Aggregate compaction QC.
+Geosynthetics (하이셀) — reinforcement design	KS K ISO 10318 (지오신세틱스 용어); KDS 11 80 05 (보강토)	EN 13251; ISO 10318; Giroud–Han design method (geogrid-reinforced unpaved roads); AASHTO Geotechnical Design Guideline for GRS	Design uses Giroud–Han bearing-capacity-improvement method or manufacturer design charts calibrated to it.
+Geosynthetics — index & durability testing	KS K ISO 10319 (인장강도); KS K ISO 12236 (CBR관입)	EN ISO 10319 (wide-width tensile); EN ISO 12236 (static puncture/CBR); EN ISO 13438 (durability)	Product certification basis.
+Plant/crane ground bearing pressure	산업안전보건기준에 관한 규칙 (Occupational Safety and Health Standards, relevant construction-machinery clauses)	BS 7121 (Code of practice for safe use of cranes) Part 1 & 11; LOLER / PUWER (UK) — referenced for methodology only	Crane manufacturer outrigger load data governs; platform must be verified for manufacturer-stated maximum outrigger reaction.
+Site investigation / subgrade strength	KS F 2314 (CBR시험); KDS 11 10 05	BS 1377; ASTM D1883 (CBR); ASTM D6635 (DCP)	Subgrade Cu / CBR characterization.
+Health & safety (construction)	산업안전보건법 및 시행규칙; KOSHA GUIDE	HSE (UK) construction guidance; OSHA 29 CFR 1926	Applied to platform construction and plant-operation safety measures (Section 7).
+4.  Design Basis
+4.1 Functional Requirements
+The platform shall be designed for the governing (maximum) ground bearing pressure among all plant items expected to operate on, or travel across, the platform during the works, including:
+•	Piling / soldier-pile installation rig (rotary, CFA, or vibratory), including maximum outrigger/track reaction during pitching (leveling) and pile extraction.
+•	Mobile or crawler crane for strut/raker/waler erection, at the working radius and configuration producing maximum outrigger or track bearing pressure.
+•	Tracked excavator (bulk dig, trimming) at maximum digging/slewing reach.
+•	Material delivery vehicles (concrete trucks, low-loaders for plant delivery/removal) — wheel loads, often governing at platform edges/access ramps.
+•	Any surcharge from stockpiled materials (soldier pile sections, strut/waler steel, spoil) adjacent to or on the platform.
+•	Any vertical loading from buildings or structures.  
+4.2 Design Method Overview
+The platform is sized using the BR470 / TWf (2019) load-spread and punching-shear method, in which the applied plant bearing pressure is checked against the combined resistance of (a) shear developed within the aggregate platform along assumed punching-shear planes, and (b) the bearing resistance of the underlying subgrade at the base of those planes. This two-layer system approach is cross-checked against classical bearing-capacity theory (Terzaghi/Meyerhof, per KDS 11 50 05 and EN 1997-1 Annex D) treating the platform as a stress-distributing layer over a weaker stratum.
+The governing design criterion is the Load Safety Factor:
+LSF  =  (Platform punching-shear resistance + Subgrade bearing resistance) / Applied bearing pressure
+•	LSF ≥ 1.0 — absolute minimum, applicable only where subgrade strength and plant loads are both well characterized and platform is not safety-critical.
+•	LSF ≥ 1.25 — recommended minimum for piling-rig and crane platforms, and wherever ground data derives from desk-study/limited investigation.
+•	LSF ≥ 1.5 — recommended where subgrade contains soft/organic pockets, made ground, or where excavation proximity reduces passive resistance on one side of the punching-shear plane (edge-of-excavation condition).
+4.3 Key Design Parameters
+Parameter	Symbol	Typical Source / Notes
+Subgrade undrained shear strength	Cu	Site investigation (CPT/vane/lab UU triaxial); characteristic (cautious) value, not mean, per EN 1997-1.
+Subgrade CBR (granular/cohesionless subgrade)	CBR	In-situ DCP or lab CBR (KS F 2314 / ASTM D1883); correlated to Cu where undrained parameters unavailable (Cu ≈ 30 × CBR, kPa, indicative only).
+Platform aggregate friction angle	φ'platform	Well-graded crushed rock, compacted; typically φ' = 40–45° for Type 1/well-graded angular aggregate.
+Platform aggregate effective cohesion	c'platform	Taken as 0 (unbound granular material) unless stabilized.
+Punching-shear angle (load spread)	θ	BR470 default: vertical-sided punching shear plane (θ = 0° from vertical) for conservative hand method, or full φ'-based spread where refined method used.
+Track/outrigger contact pressure (static)	q0	Manufacturer data sheet for the specific rig/crane and configuration — governing case, not nominal.
+Dynamic/pitching amplification factor	Kdyn	Applied to static plant load per BR470 guidance (typ. 1.1–1.3 depending on plant type and operating mode; piling rig "pitching" during pile installation is a governing dynamic case).
+Platform thickness	h	Design output — governing (max) value from LSF check across all plant/load cases and subgrade zones.
+Target LSF	LSF	Per Section 4.2 — minimum 1.0, recommended 1.25–1.5 by application.
+Minimum platform edge distance from excavation / slope crest	de	Per Section 7.1 — geotechnical stability check independent of LSF bearing check.
+4.4 Geosynthetic Reinforcement (하이셀) Design
+Where the aggregate-only platform thickness from Section 4.3 is impractical (excessive import volume, program duration, or head-room constraint beneath overhead services/structures), a geosynthetic reinforcement layer (하이셀) is introduced at the platform/subgrade interface, or as a secondary layer within the aggregate, to provide:
+•	Separation and filtration — preventing subgrade fines migration into and contamination of the aggregate (function of a woven/nonwoven geotextile).
+•	Lateral restraint / confinement — geogrid interlock with aggregate particles increases the effective friction angle and lateral stiffness of the platform layer immediately above the geogrid.
+•	Membrane (tensioned-membrane) support — for very soft subgrades, the reinforcement mobilizes tensile membrane action, providing an additional vertical resistance component.
+•	Local base reinforcement / bearing capacity improvement — quantified using the Giroud–Han (2004) design method for geogrid-reinforced unpaved/working platforms, calibrated by the geogrid manufacturer's certified aperture stability modulus (ASM).
+The geosynthetic-reinforced platform is designed using the same LSF framework as Section 4.2, with the platform punching-shear resistance term increased by the reinforcement contribution per the Giroud–Han method (or the manufacturer's third-party-certified design charts derived from it). Typical outcome: 20–30% reduction in required aggregate thickness for equivalent LSF, consistent with the geometric-efficiency principle applied elsewhere in this project's optimized-section work.
+Note: Product selection (geogrid vs. woven geotextile vs. combination/composite) and reinforcement design parameters should be confirmed against the specific 하이셀 product datasheet once available; this PRD defines the design framework, not a specific product's numeric properties. [GDS-PENDING: confirm against project reference examples.]
+5.  Step-by-Step Design Procedure
+The following sequence defines the design procedure to be followed for each platform zone (areas of differing subgrade condition, plant type, or proximity to excavation should be treated as separate design zones). This is a procedural specification — engineering judgement and calculation are to be carried out by the responsible geotechnical/structural engineer using the methods of Section 4; no calculation software or scripts are implemented by this document.
+STEP 1  Define plant and loading inputs
+•	Obtain manufacturer ground-bearing-pressure data for every plant item expected to use the platform (piling rig in all operating modes, crane at critical working radius, excavator, delivery vehicles).
+•	Identify the governing (maximum) static contact pressure and applicable dynamic/pitching factor for each plant item.
+•	Confirm track/outrigger/wheel contact dimensions and spacing (pad size, track length/width, mat size if outrigger mats are used).
+STEP 2  Characterize subgrade
+•	Review site investigation data (borehole logs, CPTs, trial pits) for the platform footprint; where data is sparse, commission supplementary investigation or targeted trial pits/DCP soundings.
+•	Derive characteristic (cautious, not average) undrained shear strength Cu or CBR for each subgrade zone, per EN 1997-1 / KDS 11 10 00 characteristic-value principles.
+•	Identify soft spots, made ground, organic material, or groundwater conditions that may reduce local subgrade strength or require additional treatment (e.g., sub-excavate and replace).
+STEP 3  Select platform aggregate and (if applicable) geosynthetic
+•	Select aggregate grading/type (typically well-graded angular crushed rock, e.g., Type 1 sub-base equivalent) and confirm design friction angle φ'.
+•	Determine whether geosynthetic reinforcement (하이셀) is required based on program, headroom, or import-volume constraints (Section 4.4); if used, select product class (geogrid / woven geotextile / composite) and obtain certified design parameters.
+STEP 4  Calculate required platform thickness (LSF check)
+•	For each design zone and each governing plant load case, calculate the applied bearing pressure (including dynamic/pitching amplification).
+•	Calculate platform punching-shear resistance and subgrade bearing resistance per the BR470/TWf method (Section 4.2), including the geosynthetic reinforcement contribution where used (Section 4.4).
+•	Iterate platform thickness until LSF meets or exceeds the target value defined in Section 4.2 for the applicable plant/application.
+•	Cross-check the governing thickness against classical two-layer bearing-capacity theory (Meyerhof) as an independent verification.
+STEP 5  Check platform edge and slope stability
+•	Verify minimum edge distance from the platform/plant operating zone to the excavation crest or slope, per Section 7.1, accounting for reduced passive resistance where the punching-shear plane daylights into the excavation.
+•	Check global slope stability of the platform + excavation edge under plant surcharge, where the platform is adjacent to a slope, using limit-equilibrium methods consistent with KDS 11 70 00 / EN 1997-1.
+STEP 6  Check settlement and serviceability
+•	Estimate total and differential settlement under sustained plant loading (e.g., a crane standing for an extended pick), particularly over variable subgrade, and confirm compatibility with plant leveling tolerance (e.g., crawler crane/piling rig level tolerance per manufacturer).
+•	Where differential settlement risk is high (transition between subgrade zones of differing stiffness), specify a transition zone with tapered thickness or additional reinforcement.
+STEP 7  Define drainage and groundwater control measures
+•	Design surface falls (typically 2–3%) and perimeter/cross-fall drainage to shed surface water off the platform and away from the excavation.
+•	Where groundwater or perched water is present near formation level, specify a drainage blanket, cut-off drain, or dewatering measure to prevent subgrade softening beneath the platform.
+STEP 8  Document design outputs
+•	Issue platform design drawings showing thickness by zone, geosynthetic layer extents/laps, drainage falls, edge distances, and exclusion zones.
+•	Issue a design basis report recording all assumptions, characteristic values, LSF results by zone/load case, and any residual risks or ground-data limitations (e.g., zones requiring proof-rolling verification per Step 9 below and Section 8).
+STEP 9  Define construction-stage verification requirements
+•	Specify field verification methods (proof rolling, plate load test, DCP) to confirm as-built subgrade strength matches design assumptions before platform aggregate is placed (see Section 6, Step 2, and Section 8).
+•	Define the trigger criteria and remedial procedure (e.g., sub-excavate and replace, increase thickness, add/upgrade geosynthetic) if field verification reveals subgrade strength below the design characteristic value.
+6.  Step-by-Step Construction Procedure
+The following procedure applies to the construction of each platform zone. Work shall not proceed to the next step until the preceding step's acceptance criteria (Section 8) are met and recorded.
+STEP 1  Pre-construction survey and clearance
+•	Confirm existing utilities/services within and adjacent to the platform footprint (utility survey, trial holes at crossing points); mark and protect or divert as required.
+•	Survey existing ground levels and confirm formation level / required cut-fill against design drawings.
+•	Establish exclusion zones and site access/egress routes before plant mobilization (see Section 7.2).
+STEP 2  Subgrade preparation and verification
+•	Strip topsoil/unsuitable material to expose the design formation level; remove any identified soft spots, organic material, or debris and backfill with approved granular material compacted in accordance with Section 6, Step 4.
+•	Proof-roll the exposed subgrade with a loaded dump truck or roller under engineer supervision; observe for excessive rutting, pumping, or deflection indicating soft areas requiring further treatment.
+•	Carry out DCP or plate load testing at a frequency defined by the design (typically one test per 200–500 m² or per design zone, minimum one per platform) to confirm subgrade strength meets or exceeds the design characteristic value.
+•	Record and report any subgrade condition below design assumptions to the design engineer immediately; do not proceed until a revised design (increased thickness, additional reinforcement, or subgrade treatment) is issued and approved.
+STEP 3  Geosynthetic (하이셀) installation, where specified
+•	Confirm delivered product matches the specified type, grade, and certified design properties (check product labeling/certificates against the design specification).
+•	Lay the geosynthetic directly on the prepared, verified subgrade, orienting the strong (machine) direction as specified on the design drawings.
+•	Overlap adjacent panels by the minimum specified in the design (typically 300–600 mm for geotextiles on firm subgrade, up to 1.0 m or mechanically jointed for very soft subgrade or geogrid under high load), in the direction of aggregate placement/plant travel to prevent lifting.
+•	Avoid vehicle/plant trafficking directly on the exposed geosynthetic; protect from UV exposure and mechanical damage prior to aggregate cover — cover within the timeframe stated on the product's certification (typically same working shift).
+•	Repair any tears or punctures per manufacturer's repair procedure (patch with matching material, minimum overlap per manufacturer instructions) before covering.
+STEP 4  Aggregate placement and compaction
+•	Place aggregate in horizontal lifts not exceeding the maximum compacted lift thickness stated in the design/compaction specification (typically 150–300 mm loose, depending on compaction plant), working from the geosynthetic-covered area outward to avoid trafficking unprotected subgrade.
+•	Tip and spread aggregate by low-ground-pressure plant; avoid turning or sharp maneuvers directly on the geosynthetic before the first lift is compacted.
+•	Compact each lift with appropriate plant (vibrating roller/plate) to the specified relative compaction (e.g., ≥ 95% of maximum dry density per Modified Proctor / KS F 2312) before placing the next lift.
+•	Verify compaction by field density testing (nuclear gauge, sand replacement, or equivalent) at the frequency specified in the QA/QC plan (Section 8).
+•	Repeat for successive lifts until design thickness is achieved across the full platform footprint, including edges and transition/ramp zones.
+STEP 5  Surface finishing and drainage
+•	Trim and grade the platform surface to the design falls (typically 2–3% cross-fall) to direct surface water away from the excavation edge and toward designated drainage points.
+•	Construct perimeter drainage (cut-off drains, swales) and any specified drainage blanket outlets; confirm they discharge to an approved point (not into the open excavation).
+•	Install edge protection, barriers, and signage per Section 7.3 before the platform is opened to plant traffic.
+STEP 6  Verification (proof load) testing of the completed platform
+•	Where specified by the design (typically for piling-rig and crane platforms), carry out a plate load test or trial pass with the actual (or representative) plant at critical locations to confirm the platform performs as designed — no excessive rutting, deflection, or visible distress.
+•	Record results and obtain design engineer sign-off before permitting full plant operation.
+STEP 7  Handover
+•	Compile as-built records (thickness by zone, compaction test results, geosynthetic installation records, proof-test results) and issue a platform handover certificate to the site team, confirming the platform is fit for the design plant loads and identifying any use restrictions (e.g., maximum outrigger load, excluded zones, maximum plant travel speed).
+•	Communicate the platform's approved use envelope to all plant operators and the temporary works coordinator before use commences.
+7.  Safety Measures
+7.1 Design-Stage Safety Measures
+•	Establish a minimum edge distance between the platform's plant operating envelope and the excavation crest, based on the punching-shear plane geometry and slope-stability check (Section 5, Step 5) — never based on bearing capacity alone.
+•	Apply the higher target LSF band (≥1.25–1.5, Section 4.2) for safety-critical platforms: piling rigs (high center of gravity, dynamic pitching loads), and any platform within the fall/collapse zone of an open excavation.
+•	Design for the worst-credible subgrade condition within each zone, not the average — use characteristic (cautious) values per EN 1997-1 / KDS 11 10 00.
+•	Identify and flag zones requiring construction-stage verification (proof rolling, plate load testing) as a mandatory hold point in the design documentation (Section 5, Step 9).
+•	Include a documented contingency/remedial procedure for subgrade conditions found weaker than design assumptions, so field teams are not making ad hoc decisions under time pressure.
+7.2 Construction-Stage Safety Measures
+•	No plant shall traffic the platform footprint until subgrade verification (Section 6, Step 2) is complete and formally accepted.
+•	Maintain exclusion zones around active placement/compaction operations; use banksmen/spotters for all plant reversing or working near the excavation edge.
+•	Prohibit plant and personnel from standing on or trafficking an exposed (uncovered) geosynthetic layer, other than the minimum necessary for installation.
+•	Enforce a minimum edge/barrier setback during construction consistent with the design edge distance (Section 7.1); do not reduce it for temporary construction convenience without engineer approval.
+•	Inspect each completed lift for compaction, thickness, and level before covering with the next lift or opening to plant traffic — do not proceed on an unverified lift.
+•	Carry out the proof-load / trial-pass verification (Section 6, Step 6) under exclusion-zone conditions with only essential personnel present.
+•	Maintain positive drainage throughout construction; do not allow ponding on the partially completed platform, which can locally soften aggregate/subgrade.
+7.3 In-Service (Operational) Safety Measures
+•	Display the approved use envelope (maximum outrigger/track load, excluded zones, maximum travel speed, one-way/two-way traffic routes) at platform access points and communicate it in the plant operators' site induction.
+•	Carry out routine visual inspection of the platform surface (rutting, cracking, ponding, edge erosion) at a frequency proportional to usage intensity — minimum daily during active piling/crane operations.
+•	Re-verify (visual + spot compaction/level check) after any heavy rainfall event, freeze-thaw cycle, or extended plant standing load, before resuming full operations.
+•	Maintain platform surface drainage falls throughout the service life; repair rutting or ponding promptly with compacted aggregate reinstatement, not by simply blading/regrading without compaction.
+•	Prohibit any excavation, trenching, or service installation through the platform without a permit-to-work and reinstatement procedure agreed with the temporary works coordinator.
+•	Monitor for signs of edge instability (tension cracks, bulging) near the excavation crest; stop plant operations in the affected zone immediately and notify the temporary works coordinator/designer.
+•	Where the platform supports a piling rig or crane at a fixed position for an extended duration, monitor for progressive settlement (e.g., periodic level survey) and act on any trend exceeding the design serviceability limit (Section 5, Step 6).
+•	Decommission and reinstate (or formally hand over as permanent works, if applicable) the platform at the end of its service life per Section 9.
+Note: These safety measures are procedural minimums consistent with 산업안전보건법/KOSHA guidance and international practice (HSE/OSHA); project-specific temporary works procedures (TWP) and the site's health & safety plan take precedence where more stringent.
+8.  QA/QC and Acceptance Criteria
+Stage	Test / Check	Frequency	Acceptance Criterion
+Subgrade	Proof roll (visual)	100% of footprint	No visible rutting, pumping, or deflection under loaded vehicle.
+Subgrade	DCP / plate load test	Min. 1 per design zone; 1 per 200–500 m²	≥ design characteristic Cu / CBR.
+Geosynthetic	Product certificate check	Each delivery/batch	Matches specified type/grade; certified properties on file.
+Geosynthetic	Installation inspection	100% visual, continuous during laying	Correct orientation, overlap ≥ specified minimum, no tears/damage, covered within specified time.
+Aggregate	Grading / source approval	Each source / as specified	Conforms to specified grading envelope (e.g., Type 1 equivalent).
+Aggregate compaction	Field density test	Min. 1 per lift per 200–500 m² (or as specified)	≥ 95% max. dry density (Modified Proctor / KS F 2312), or as specified.
+Platform level/thickness	Survey	Grid survey on completion of each zone	As-built thickness ≥ design thickness (tolerance −0/+ per spec); falls within ±0.5% of design fall.
+Platform performance	Proof-load / trial pass (critical platforms)	Once, prior to full operational use	No excessive rutting/deflection; engineer sign-off recorded.
+In-service	Routine visual inspection	Daily during active use (min. weekly otherwise)	No rutting > specified limit, no ponding, no edge distress.
+9.  Maintenance, Monitoring and Decommissioning
+9.1 Maintenance During Service Life
+•	Reinstate any rutted or degraded areas promptly by removing disturbed material, re-compacting in lifts, and re-testing per Section 8, rather than overlaying loose material on a soft base.
+•	Maintain and clear drainage falls, cut-off drains, and outlets throughout the platform's service life; sediment/debris blockage is a common cause of localized softening.
+•	Reassess the platform design if plant type, load, or operating position changes from the original design basis (e.g., a heavier crane or piling rig substituted mid-project) before that plant is deployed.
+9.2 Periodic Monitoring
+•	Level survey at a frequency matched to observed settlement trend and criticality (e.g., monthly for platforms supporting long-duration crane standing loads).
+•	Visual condition survey concurrent with routine temporary works inspections required under the project's temporary works procedure.
+9.3 Decommissioning
+•	At the end of the platform's service life, remove aggregate (and geosynthetic, unless left in place by design as part of a permanent working surface) and reinstate the area per the permanent works / landscaping requirements.
+•	Where the geosynthetic is left in place, record its location and extent in the as-built/handover records for future site works.
+•	Close out and archive all QA/QC, monitoring, and inspection records as part of the temporary works close-out file.
+10.  Risk Register (Summary)
+Hazard	Potential Consequence	Likelihood*	Severity*	Primary Mitigation
+Punching shear failure through platform into weak subgrade	Plant tips/sinks; potential injury, plant loss, delay	Med	High	LSF design (Section 4.2) with characteristic subgrade values + construction-stage verification (Section 6, Step 2).
+Undetected soft spot / made ground	Localized platform failure	Med	High	Site investigation coverage + proof rolling/DCP at construction stage (Section 6, Step 2).
+Edge/slope instability near excavation	Platform or plant collapse into excavation	Low–Med	Very High	Minimum edge distance + slope stability check (Section 5, Step 5) + monitoring (Section 7.3).
+Geosynthetic damage/incorrect installation	Loss of reinforcement benefit; localized under-design	Med	Med	Installation inspection + repair procedure (Section 6, Step 3).
+Water ingress / poor drainage	Subgrade softening, reduced LSF over time	Med	Med	Drainage design (Section 5, Step 7) + maintenance (Section 9.1).
+Plant exceeding design load envelope	Bearing failure, tip-over	Low–Med	High	Communicated use envelope + site induction (Section 7.3).
+Differential settlement across subgrade transition	Plant instability/mal-level	Low	Med	Transition zone design + monitoring (Section 5, Step 6).
+*Likelihood/Severity are indicative categories for illustration; project-specific risk assessment should be carried out per the site's risk assessment procedure and recorded separately.
+11.  References
+1.	BRE / TWf. BR470 — Working Platforms for Tracked Plant, 2nd edition (2019 update), Building Research Establishment / Temporary Works forum.
+2.	CIRIA C787 — Guidance related to temporary works platforms and ground engineering.
+3.	KDS 11 10 00 — 지반 설계기준 (일반사항), Korea Design Standard.
+4.	KDS 11 50 05 — 얕은기초 설계기준, Korea Design Standard.
+5.	KDS 11 80 05 — 보강토옹벽 설계기준 (reinforced soil structures — reinforcement design cross-reference), Korea Design Standard.
+6.	KCS 11 20 20 — 성토 및 다짐 표준시방서, Korea Construction Specification.
+7.	EN 1997-1:2004+A1 — Eurocode 7: Geotechnical design — Part 1: General rules.
+8.	EN 13251, ISO 10318, EN ISO 10319, EN ISO 12236 — Geosynthetics terminology, tensile and puncture test standards.
+9.	Giroud, J.P. and Han, J. (2004). "Design Method for Geogrid-Reinforced Unpaved Roads." Journal of Geotechnical and Geoenvironmental Engineering, ASCE.
+10.	BS 7121 — Code of practice for the safe use of cranes (Parts 1 and 11).
+11.	KS F 2312, KS F 2314 — 다짐시험, CBR시험, Korean Industrial Standards.
+12.	산업안전보건법 및 산업안전보건기준에 관한 규칙; KOSHA GUIDE (relevant construction plant/earthworks guides).
+Appendix A  Appendix A — Comparative Table: Aggregate-Only vs. Geosynthetic-Reinforced Platform
+Criterion	Aggregate-Only Platform	Geosynthetic-Reinforced Platform (하이셀)
+Required thickness (typ.)	Baseline (governs by LSF check alone)	~20–30% thinner for equivalent LSF (Giroud–Han contribution)
+Import aggregate volume / cost	Higher	Lower aggregate cost, offset by geosynthetic material + installation cost
+Program / construction speed	Simple, fast to place; no laying sequence constraint	Requires careful laying/overlap sequence; slightly slower per zone but net faster where thickness reduction shortens overall earthworks
+Performance on soft/variable subgrade	Requires greater thickness to compensate; more prone to punching on soft pockets	Better performance — separation prevents fines contamination; reinforcement improves punching resistance directly
+Suitability for very soft subgrade (Cu very low)	May become impractical (excessive thickness)	Preferred; membrane/reinforcement action essential
+Headroom-constrained sites (overhead services/structures)	Limited by required thickness	Preferred where reduced thickness is needed to fit clearance
+Sensitivity to installation quality	Low — mainly compaction QC	Higher — orientation, overlap, and damage during laying materially affect performance
+Removability / reuse at decommissioning	Aggregate can be reused elsewhere	Geosynthetic typically not reusable; may be left in place or disposed of
+Typical application in MiPM works	Firm subgrade, short-duration platforms (excavator trafficking)	Piling rig / crane platforms on soft or variable subgrade, or headroom-constrained zones
+Appendix B  Appendix B — Design Zone Record Template (for use during Section 5 execution)
+The following record fields should be completed for each platform design zone; a blank template (spreadsheet or form) should be issued alongside this PRD for field/design-office use — no calculation logic is embedded in this PRD.
+•	Zone ID / location reference
+•	Governing plant item(s) and load case(s)
+•	Subgrade characteristic Cu / CBR and source of data
+•	Aggregate type and design φ'
+•	Geosynthetic product and design properties (if used)
+•	Calculated required thickness and resulting LSF
+•	Edge distance and slope stability check result
+•	Construction-stage verification method and hold-point sign-off record
+Appendix C  Appendix C — Note on GDS Reference Files
+This PRD was requested to incorporate design and construction examples from the local reference folder c:/Users/user/my-projects/gds. That path is on the user's local Windows machine and was not accessible from the cloud execution environment used to prepare this document. No content from that folder has been incorporated.
+To complete the intended cross-referencing (e.g., specific project case thicknesses, actual 하이셀 product data, photographs/details of prior platform construction), please supply the relevant files by upload, pasted content, or a shared repository, and this PRD can be revised (Rev. B) to incorporate specific worked examples and any lessons-learned notes from those references.

@@ -16,7 +16,7 @@ plant (piling rigs, cranes, excavators) during MiPM deep-excavation works.
   originally flagged as pending.
 - `knowledge/` — markdown summaries of the above, written for the sub-agents to `Read`/`Grep`
   directly: `aggregate-working-platform-prd.md`, `company-specs-summary.md`,
-  `design-worked-examples.md`.
+  `design-worked-examples.md`, `field-video-notes.md`.
 - `.claude/agents/` — four specialist sub-agents: `platform-design`, `platform-construction`,
   `platform-safety`, `platform-qaqc`. See their frontmatter `description` for trigger phrases.
 - `.claude/skills/aggregate-platform/` — `/aggregate-platform` entry-point skill that routes a
@@ -49,7 +49,10 @@ sub-agents.
   `.docx` file (as plain text) and keep `knowledge/aggregate-working-platform-prd.md` in sync.
 - `GDS_spec/시방서.zip` must be extracted before its PDFs can be read — see
   `knowledge/company-specs-summary.md` for the extraction command. The four `.mp4` files in
-  `GDS_spec/` are field/product video clips, not yet reviewed or summarized.
+  `GDS_spec/` are field/product/marketing video clips from the same company
+  (㈜지반디자인앤솔루션); reviewed visually (sample frames + burned-in on-screen text, no
+  speech-to-text) — see `knowledge/field-video-notes.md` for findings, including the company's
+  practical 250mm field lift-thickness target and a real plate-load-test record example.
 - This PRD explicitly scopes out implementing calculation software (§1.2) — sub-agents walk
   engineers through the design procedure and do arithmetic on given/confirmed inputs, but should
   not be turned into a standalone calculator tool without the user asking for that explicitly.

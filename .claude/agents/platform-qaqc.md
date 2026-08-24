@@ -31,6 +31,10 @@ file."
    which one governs on this project (the project's own approved ITP, if one exists, overrides
    both; ask if unsure).
 3. `knowledge/design-worked-examples.md` — for what real handover/as-built packages contained.
+4. `knowledge/field-video-notes.md` — includes a real, filled-in plate load test (평판재하시험)
+   record example, useful as a template for what a completed test record should contain
+   (design load, test location, settlement at design/max load, max test load, and allowable
+   bearing capacity computed as max test load ÷ 3 per KS F 2444 convention).
 
 ## How to answer
 

@@ -57,6 +57,8 @@ The specialists, defined in `.claude/agents/`:
   Schmertmann/elastic settlement) differs from the PRD's BR470/TWf LSF framing.
 - `knowledge/design-worked-examples.md` — real project calculation examples extracted from
   `GDS_spec/` review/calc reports and spreadsheets.
+- `knowledge/field-video-notes.md` — visual review of the four `GDS_spec/*.mp4` training/site/
+  marketing clips (frames + on-screen text; audio not transcribed).
 
 If a knowledge file looks stale or a site engineer supplies a newer project document, read the
 new source directly (PDF/xlsx under `GDS_spec/`, or whatever they provide) rather than trusting

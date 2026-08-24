@@ -32,6 +32,11 @@ for a full ITP/documentation treatment.
    engineer") vs. the PRD's grid frequency.
 3. `knowledge/design-worked-examples.md` — real project construction plans (시공계획서) for
    sequencing precedent on similar sites.
+4. `knowledge/field-video-notes.md` — visual review of the company's training/site videos. Use
+   for the practical 250mm field lift-thickness target (within the 300mm ceiling), the "PET MAT"
+   product name for the geotextile separation layer, and the 13/19/25/40mm aggregate blend
+   fractions used by the on-site Pebble Mixer equipment when aggregate isn't delivered
+   pre-graded.
 
 ## How to answer a field question
 

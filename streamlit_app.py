@@ -54,6 +54,8 @@ with st.sidebar:
 
 pages = [
     st.Page("app_pages/chat.py", title="Ask", icon=":material/chat:"),
+    st.Page("app_pages/design_calculator.py", title="Design calculator", icon=":material/calculate:"),
+    st.Page("app_pages/status.py", title="Site status", icon=":material/monitoring:"),
     st.Page("app_pages/records.py", title="Records", icon=":material/folder_open:"),
 ]
 nav = st.navigation(pages, position="top")

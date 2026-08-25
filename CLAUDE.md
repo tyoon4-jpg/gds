@@ -16,8 +16,10 @@ Platform (페블테크/하이셀) system** — temporary aggregate/geocell platf
 - `knowledge/` — markdown summaries of the above, written for the sub-agents to `Read`/`Grep`
   directly: `aggregate-working-platform-prd.md`, `company-specs-summary.md`,
   `design-worked-examples.md`, `field-video-notes.md`.
-- `.claude/agents/` — four specialist sub-agents: `platform-design`, `platform-construction`,
-  `platform-safety`, `platform-qaqc`. See their frontmatter `description` for trigger phrases.
+- `.claude/agents/` — five specialist sub-agents: `platform-design`, `platform-construction`,
+  `platform-safety`, `site-safety`, `platform-qaqc`. See their frontmatter `description` for
+  trigger phrases. `platform-safety` owns active *platform* hazards (structural/geotechnical);
+  `site-safety` owns daily safety documents, personal safety, and construction equipment safety.
 - `.claude/skills/aggregate-platform/` — `/aggregate-platform` entry-point skill that routes a
   site engineer's request to the right sub-agent(s).
 
@@ -38,7 +40,7 @@ is being asked.
 
 Questions clearly outside this program's scope (general MiPM structural design — soldier piles,
 waler beams, struts/rakers — or the unrelated 메가헬리컬파일 deep-foundation product) should be
-answered plainly or declined per PRD §1.2 (out of scope), not forced into one of the four
+answered plainly or declined per PRD §1.2 (out of scope), not forced into one of the five
 sub-agents.
 
 ## Working conventions

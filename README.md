@@ -12,17 +12,20 @@ design → construction → safety → QA/QC workflow.
 | `Aggregate_Working_Platform_PRD.docx` | Governing requirements document (design method, step-by-step design & construction procedures, safety measures, QA/QC, risk register). Plain text despite the extension. |
 | `GDS_spec/` | Real company product specifications (특별시방서) and real project design/review/calculation packages (검토서/계산서/시공계획서) — the ground-truth reference material. |
 | `knowledge/` | Markdown summaries of the above, written for the sub-agents to read directly. |
-| `.claude/agents/` | Four specialist sub-agents: **design**, **construction**, **safety**, **QA/QC**. |
+| `.claude/agents/` | Five specialist sub-agents: **design**, **construction**, **safety**, **site-safety**, **QA/QC**. |
 | `.claude/skills/aggregate-platform/` | `/aggregate-platform` — entry-point router to the right sub-agent(s). |
 
-## The four specialists
+## The five specialists
 
 - **`platform-design`** — thickness sizing, bearing-capacity/settlement checks, geosynthetic/
   geocell selection, edge distance & slope stability screening.
 - **`platform-construction`** — field sequencing: subgrade prep, geocell/geotextile
   installation, lift/compaction procedure, proof-load testing, handover.
-- **`platform-safety`** — active hazards, exclusion zones, stop-work decisions, in-service
-  inspection/monitoring, risk register.
+- **`platform-safety`** — active *platform* hazards (rutting, ponding, cracking, overload),
+  exclusion zones tied to platform monitoring, stop-work decisions, risk register.
+- **`site-safety`** — daily safety documents/toolbox talks, personal safety (PPE, manual
+  handling, heat/cold stress), general site hazards, and construction equipment safety
+  (pre-use checks, exclusion zones around plant).
 - **`platform-qaqc`** — test frequency/acceptance criteria, product certificates, ITPs,
   as-built/handover records, maintenance/monitoring/decommissioning.
 

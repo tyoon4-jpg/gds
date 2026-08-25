@@ -28,7 +28,13 @@ AGENTS: dict[str, dict[str, str]] = {
         "label": "Safety",
         "icon": ":material/health_and_safety:",
         "agent_file": ".claude/agents/platform-safety.md",
-        "blurb": "Active hazards, exclusion zones, stop-work, in-service monitoring.",
+        "blurb": "Active platform hazards, exclusion zones, stop-work, in-service monitoring.",
+    },
+    "site-safety": {
+        "label": "Site Safety",
+        "icon": ":material/shield_person:",
+        "agent_file": ".claude/agents/site-safety.md",
+        "blurb": "Daily safety documents, PPE, general site hazards, equipment safety.",
     },
     "platform-qaqc": {
         "label": "QA / QC",
@@ -46,7 +52,7 @@ KNOWLEDGE_FILES = [
 ]
 
 RECORDS_DIR = REPO_ROOT / "records"
-RECORD_CATEGORIES = ["zone-records", "nonconformance", "reinstatement", "other"]
+RECORD_CATEGORIES = ["zone-records", "nonconformance", "reinstatement", "daily-safety", "other"]
 
 _DASHBOARD_LIMITATIONS = """
 ## Interface limitations (read before answering)

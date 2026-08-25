@@ -30,6 +30,13 @@ AGENT_KEYWORDS = {
         "safe", "safety", "hazard", "exclusion zone", "stop work", "risk", "incident",
         "notify", "crest", "excavation edge", "monitor", "inspection frequency",
     ],
+    "site-safety": [
+        "toolbox talk", "daily safety", "safety briefing", "ppe", "jsa",
+        "job safety analysis", "heat stress", "cold stress", "manual handling",
+        "pre-use check", "pre-use inspection", "equipment inspection", "muster point",
+        "site induction", "near miss", "incident report", "housekeeping",
+        "traffic management", "working at height",
+    ],
     "platform-qaqc": [
         "test frequency", "acceptance criterion", "acceptance criteria", "itp",
         "certificate", "record", "maintenance", "decommission", "plate load",

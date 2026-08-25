@@ -29,6 +29,11 @@ SUGGESTIONS = {
         "There's a tension crack near the crest, 3m from our crane — what now?",
         "What edge distance do we need from an open excavation?",
     ],
+    "site-safety": [
+        "Draft today's safety briefing — subgrade compaction and geocell placement, sunny 32°C.",
+        "What's the exclusion zone around the Pebble Mixer while it's running?",
+        "What PPE do we need for placing and pinning geocell panels?",
+    ],
     "platform-qaqc": [
         "What test do we need before opening a platform to crane traffic?",
         "What goes in an as-built handover package?",

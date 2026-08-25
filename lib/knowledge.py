@@ -13,35 +13,43 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 
 AGENTS: dict[str, dict[str, str]] = {
     "platform-design": {
-        "label": "Design",
+        "label": "설계",
         "icon": ":material/design_services:",
         "agent_file": ".claude/agents/platform-design.md",
-        "blurb": "Thickness sizing, bearing capacity/settlement/LSF calcs, geosynthetic selection.",
+        "blurb": "두께 산정, 지지력/침하/LSF 계산, 지오신세틱 선정.",
     },
     "platform-construction": {
-        "label": "Construction",
+        "label": "시공",
         "icon": ":material/construction:",
         "agent_file": ".claude/agents/platform-construction.md",
-        "blurb": "Field sequencing: subgrade prep, installation, compaction, handover.",
+        "blurb": "현장 시공 순서: 노상 준비, 설치, 다짐, 인수인계.",
     },
     "platform-safety": {
-        "label": "Safety",
+        "label": "플랫폼 안전",
         "icon": ":material/health_and_safety:",
         "agent_file": ".claude/agents/platform-safety.md",
-        "blurb": "Active platform hazards, exclusion zones, stop-work, in-service monitoring.",
+        "blurb": "플랫폼 관련 위험, 배제구역, 작업중지, 사용중 모니터링.",
     },
     "site-safety": {
-        "label": "Site Safety",
+        "label": "현장 안전",
         "icon": ":material/shield_person:",
         "agent_file": ".claude/agents/site-safety.md",
-        "blurb": "Daily safety documents, PPE, general site hazards, equipment safety.",
+        "blurb": "일일 안전문서, 보호구(PPE), 일반 현장 위험, 장비 안전.",
     },
     "platform-qaqc": {
-        "label": "QA / QC",
+        "label": "품질(QA/QC)",
         "icon": ":material/fact_check:",
         "agent_file": ".claude/agents/platform-qaqc.md",
-        "blurb": "Test frequency/acceptance criteria, ITPs, records, maintenance.",
+        "blurb": "시험 빈도/합격기준, 검사기준서(ITP), 기록, 유지관리.",
     },
+}
+
+CATEGORY_LABELS: dict[str, str] = {
+    "zone-records": "구역별 기록",
+    "nonconformance": "부적합 사항",
+    "reinstatement": "복구 기록",
+    "daily-safety": "일일 안전문서",
+    "other": "기타",
 }
 
 KNOWLEDGE_FILES = [
@@ -74,6 +82,23 @@ differences from the full agentic program:
 - Stay in your own lane (see your role below). This dashboard shows other specialists as
   separate chat tabs — if a question is really theirs, say so, but still answer the part that's
   yours.
+
+## Output language
+
+The site engineers using this dashboard are Korean-speaking. **Always respond in Korean
+(한국어)**, regardless of what language the question was asked in. Keep proper nouns, product
+names, and standard technical notation as commonly used on Korean sites rather than translating
+them: 페블테크, 하이셀, 구속셀, PET MAT, unit symbols (kPa, kN/m³, mm, m), formula/method names
+(Terzaghi, Meyerhof, Schmertmann, LSF), and Greek symbols (φ, γ, ν). Numbers and formulas stay as
+written.
+
+**Marker words stay literally in English even inside Korean text**, because the dashboard's
+Site status/Records pages scan the saved file for these exact tokens to compute badges and
+counts — translating them would silently break that feature:
+- `DRAFT` — any record you draft must include this exact word (e.g. "**상태: 초안(DRAFT)** — ...").
+- `PENDING` — any field/item still open or awaiting confirmation must be marked with this exact
+  word (e.g. "트랙 패드 폭/길이: **PENDING** — 장비 제원표에서 아직 확보되지 않음").
+Write the surrounding sentence in Korean; just don't translate `DRAFT`/`PENDING` themselves.
 """
 
 

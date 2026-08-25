@@ -39,8 +39,8 @@ def stream_agent_reply(agent_key: str, messages: list[dict], api_key: str) -> It
     stays usable — callers should treat a yielded string starting with '⚠' as an error."""
     if not api_key:
         yield (
-            "⚠ No Anthropic API key configured. Set `ANTHROPIC_API_KEY` in "
-            "`.streamlit/secrets.toml`, as an environment variable, or in the sidebar field."
+            "⚠ Anthropic API 키가 설정되어 있지 않습니다. `.streamlit/secrets.toml`에 "
+            "`ANTHROPIC_API_KEY`를 설정하거나, 환경변수로 지정하거나, 사이드바에 직접 입력하세요."
         )
         return
 
@@ -62,10 +62,10 @@ def stream_agent_reply(agent_key: str, messages: list[dict], api_key: str) -> It
         ) as stream:
             yield from stream.text_stream
     except anthropic.AuthenticationError:
-        yield "⚠ Authentication failed — check that the API key is valid."
+        yield "⚠ 인증 실패 — API 키가 올바른지 확인하세요."
     except anthropic.RateLimitError:
-        yield "⚠ Rate limited by the API. Wait a moment and try again."
+        yield "⚠ API 사용량 제한에 걸렸습니다. 잠시 후 다시 시도하세요."
     except anthropic.APIStatusError as e:
-        yield f"⚠ API error ({e.status_code}): {e.message}"
+        yield f"⚠ API 오류 ({e.status_code}): {e.message}"
     except anthropic.APIConnectionError:
-        yield "⚠ Network error reaching the Anthropic API. Check your connection."
+        yield "⚠ Anthropic API 연결에 실패했습니다. 네트워크 연결을 확인하세요."

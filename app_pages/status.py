@@ -2,12 +2,12 @@ from datetime import datetime, timezone
 
 import streamlit as st
 
-from lib.knowledge import RECORDS_DIR
+from lib.knowledge import CATEGORY_LABELS, RECORDS_DIR
 
-st.title(":material/monitoring: Site status")
+st.title(":material/monitoring: 현장 현황")
 st.caption(
-    "Live view of records/ — refreshes automatically. Leave this open on a shared screen for "
-    "construction/safety/QA-QC to see current holds and recent activity without asking."
+    "records/ 폴더의 실시간 현황 — 자동으로 갱신됩니다. 공용 화면에 띄워두면 시공/안전/품질 "
+    "담당자가 별도 요청 없이 현재 홀드(작업중지) 및 최근 활동을 확인할 수 있습니다."
 )
 
 
@@ -44,11 +44,11 @@ def live_status_board():
         by_category[r["category"]] += 1
 
     with st.container(horizontal=True):
-        st.metric("Total records", total, border=True)
-        st.metric("Open holds", open_holds, border=True, delta_color="inverse")
-        st.metric("Open PENDING items", total_pending, border=True, delta_color="inverse")
+        st.metric("전체 기록", total, border=True)
+        st.metric("미해제 홀드(작업중지)", open_holds, border=True, delta_color="inverse")
+        st.metric("미처리 대기 항목", total_pending, border=True, delta_color="inverse")
         st.metric(
-            "Last updated",
+            "마지막 갱신",
             datetime.now(timezone.utc).strftime("%H:%M:%S UTC"),
             border=True,
         )
@@ -56,29 +56,29 @@ def live_status_board():
     if by_category:
         with st.container(horizontal=True):
             for cat, count in by_category.items():
-                st.metric(cat, count, border=True)
+                st.metric(CATEGORY_LABELS.get(cat, cat), count, border=True)
 
-    st.markdown("### Recent activity")
+    st.markdown("### 최근 활동")
     if not rows:
-        st.info("No records yet — nothing has been saved to `records/`.")
+        st.info("아직 기록이 없습니다 — `records/`에 저장된 내용이 없습니다.")
         return
 
     for r in rows[:20]:
         with st.container(border=True):
             cols = st.container(horizontal=True, horizontal_alignment="distribute")
             with cols:
-                label = f"**{r['name']}**  ·  {r['category']}"
+                label = f"**{r['name']}**  ·  {CATEGORY_LABELS.get(r['category'], r['category'])}"
                 st.markdown(label)
                 badges = []
                 if r["hold_open"]:
-                    badges.append(":red-badge[HOLD OPEN]")
+                    badges.append(":red-badge[홀드 진행중]")
                 if r["is_draft"]:
-                    badges.append(":orange-badge[DRAFT]")
+                    badges.append(":orange-badge[초안]")
                 if r["pending_count"]:
-                    badges.append(f":gray-badge[{r['pending_count']} pending]")
-                st.markdown(" ".join(badges) if badges else ":green-badge[no open items]")
+                    badges.append(f":gray-badge[대기 {r['pending_count']}건]")
+                st.markdown(" ".join(badges) if badges else ":green-badge[미해결 항목 없음]")
             mtime = datetime.fromtimestamp(r["mtime"], tz=timezone.utc)
-            st.caption(f"Last modified: {mtime.strftime('%Y-%m-%d %H:%M UTC')}")
+            st.caption(f"최종 수정: {mtime.strftime('%Y-%m-%d %H:%M UTC')}")
 
 
 live_status_board()

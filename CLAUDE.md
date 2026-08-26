@@ -58,3 +58,10 @@ sub-agents.
 - This PRD explicitly scopes out implementing calculation software (§1.2) — sub-agents walk
   engineers through the design procedure and do arithmetic on given/confirmed inputs, but should
   not be turned into a standalone calculator tool without the user asking for that explicitly.
+- The Streamlit dashboard (`streamlit_app.py` + `app_pages/`) is deployed to Streamlit Community
+  Cloud. Draft records saved there via "초안 저장" (`records/<category>/*.md`) are **not
+  durable** — the deployed container's filesystem is ephemeral, so a redeploy, restart, or the
+  app sleeping/waking from inactivity wipes anything saved through the live app that wasn't
+  already committed to git. This is a known, accepted limitation for now (not a bug to fix
+  reflexively) — flag it if a user reports "my saved record disappeared" rather than treating it
+  as a new issue.

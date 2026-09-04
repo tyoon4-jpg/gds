@@ -28,9 +28,27 @@ def get_api_key() -> str | None:
     return os.environ.get("ANTHROPIC_API_KEY")
 
 
+def get_workspace_id() -> str | None:
+    """Resolve an optional workspace id (st.secrets > environment variable).
+
+    Identity-linked API keys (the kind the Anthropic Console issues for a personal
+    account) require every request to name the workspace it acts in; a plain
+    workspace-scoped key does not need this."""
+    try:
+        secret = st.secrets.get("ANTHROPIC_WORKSPACE_ID")
+        if secret:
+            return secret
+    except Exception:
+        pass
+    return os.environ.get("ANTHROPIC_WORKSPACE_ID")
+
+
 @st.cache_resource(show_spinner=False)
-def _get_client(api_key: str) -> anthropic.Anthropic:
-    return anthropic.Anthropic(api_key=api_key)
+def _get_client(api_key: str, workspace_id: str | None) -> anthropic.Anthropic:
+    default_headers = (
+        {"anthropic-workspace-id": workspace_id} if workspace_id else None
+    )
+    return anthropic.Anthropic(api_key=api_key, default_headers=default_headers)
 
 
 def stream_agent_reply(agent_key: str, messages: list[dict], api_key: str) -> Iterator[str]:
@@ -44,7 +62,7 @@ def stream_agent_reply(agent_key: str, messages: list[dict], api_key: str) -> It
         )
         return
 
-    client = _get_client(api_key)
+    client = _get_client(api_key, get_workspace_id())
     system_prompt = build_system_prompt(agent_key)
 
     try:

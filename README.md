@@ -5,6 +5,10 @@ An agentic AI program for **site engineers** working on the 페블테크 (Pebble
 reinforced) layers used to improve ground bearing capacity, sized and verified through a
 design → construction → safety → QA/QC workflow.
 
+## Live dashboard
+
+Deployed on Streamlit Community Cloud: https://tyoon4-jpg-gds-streamlit-app-lwiiwv.streamlit.app/
+
 ## What's in this repo
 
 | Path | Contents |

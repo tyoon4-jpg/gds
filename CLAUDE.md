@@ -65,3 +65,36 @@ sub-agents.
   already committed to git. This is a known, accepted limitation for now (not a bug to fix
   reflexively) — flag it if a user reports "my saved record disappeared" rather than treating it
   as a new issue.
+
+## Running the Streamlit dashboard locally
+
+Entry point is `streamlit_app.py`. Run it with `streamlit run` (plain `python
+streamlit_app.py` just prints a warning and exits):
+
+```powershell
+& "C:\Users\user\AppData\Local\Python\pythoncore-3.14-64\python.exe" -m streamlit run streamlit_app.py
+```
+
+On this machine, `streamlit` and `anthropic` are installed under the
+`AppData\Local\Python\pythoncore-3.14-64` interpreter (NOT the
+`Programs\Python\Python314` one, which lacks `streamlit`).
+
+### API key
+
+`lib/llm.py::get_api_key()` resolves in order: sidebar override > `st.secrets` >
+`ANTHROPIC_API_KEY` env var. For local dev, put the key in
+`.streamlit/secrets.toml` (gitignored):
+
+```toml
+ANTHROPIC_API_KEY = "sk-ant-api03-..."
+# Only if the key is "identity-linked" (the kind the Console issues for a
+# personal account) — every request then needs the workspace it acts in.
+# Get the wrkspc_... id from console.anthropic.com/settings/workspaces (in the URL).
+ANTHROPIC_WORKSPACE_ID = "wrkspc_..."
+```
+
+Without `ANTHROPIC_WORKSPACE_ID`, an identity-linked key fails every call with
+HTTP 400 `anthropic-workspace-id is required`. `lib/llm.py` sends the header when
+that secret is set; workspace-scoped keys don't need it. Restart the app after
+changing secrets. On Streamlit Community Cloud, set the same keys in the app's
+Settings -> Secrets instead.

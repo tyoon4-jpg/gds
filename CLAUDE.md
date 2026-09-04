@@ -75,6 +75,13 @@ streamlit_app.py` just prints a warning and exits):
 & "C:\Users\user\AppData\Local\Python\pythoncore-3.14-64\python.exe" -m streamlit run streamlit_app.py
 ```
 
+Or use the `run.ps1` helper checked into the repo root, which finds the right
+interpreter for you:
+
+```powershell
+.\run.ps1
+```
+
 On this machine, `streamlit` and `anthropic` are installed under the
 `AppData\Local\Python\pythoncore-3.14-64` interpreter (NOT the
 `Programs\Python\Python314` one, which lacks `streamlit`).

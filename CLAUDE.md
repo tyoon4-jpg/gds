@@ -79,7 +79,8 @@ Or use the `run.ps1` helper checked into the repo root, which finds the right
 interpreter for you:
 
 ```powershell
-.\run.ps1
+
+
 ```
 
 On this machine, `streamlit` and `anthropic` are installed under the
